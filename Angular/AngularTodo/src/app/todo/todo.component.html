@@ -1,0 +1,30 @@
+<main>
+  <h1>Todo</h1>
+  <div>
+    <form (submit)="addTodo($event)">
+      <input type="text" [(ngModel)]="newTodo" name="todo" required />
+      <app-button [type]="'submit'" [color]="'primary'">Add</app-button>
+    </form>
+
+    <div>
+      <ul>
+        <li *ngFor="let todo of todoList">
+          <span class="checkbox">
+            <input
+              type="checkbox"
+              id="{{ todo.id }}"
+              [checked]="todo.checked"
+              (change)="checkChanged($event, todo.id)"
+            />
+            <label for="{{ todo.id }}" [ngClass]="{ cross: todo.checked }">{{
+              todo.content
+            }}</label>
+          </span>
+          <app-button [color]="'error'" (click)="deleteTodo(todo.id)"
+            >Delete</app-button
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>
