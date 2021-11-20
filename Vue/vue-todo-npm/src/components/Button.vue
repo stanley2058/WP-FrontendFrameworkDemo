@@ -1,0 +1,72 @@
+<template>
+  <button :type="type" :class="[color]" @click="click">
+    <slot></slot>
+  </button>
+</template>
+
+<style scoped>
+:root {
+  --color-background: #0d6efd;
+  --color-foreground: #fff;
+  --color-border: #0d6efd;
+}
+
+button {
+  padding: 0.25em 0.75em;
+  border: none;
+  cursor: pointer;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  border: var(--color-border) 2px solid;
+  border-radius: 4px;
+}
+
+button:hover {
+  filter: brightness(130%);
+}
+
+.primary {
+  --color-background: #0d6efd;
+  --color-foreground: #fff;
+  --color-border: #0d6efd;
+}
+
+.secondary {
+  --color-background: #6c757d;
+  --color-foreground: #fff;
+  --color-border: #6c757d;
+}
+
+.warn {
+  --color-background: #ffc107;
+  --color-foreground: #000;
+  --color-border: #ffc107;
+}
+
+.error {
+  --color-background: #dc3545;
+  --color-foreground: #fff;
+  --color-border: #dc3545;
+}
+</style>
+
+<script>
+export default {
+  name: "Button",
+  props: {
+    type: {
+      type: String,
+      default: "button",
+    },
+    color: {
+      type: String,
+      default: "primary",
+    },
+  },
+  methods: {
+    click() {
+      this.$emit("click");
+    },
+  },
+};
+</script>

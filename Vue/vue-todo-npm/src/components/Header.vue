@@ -1,0 +1,39 @@
+<template>
+  <div>
+    <nav>
+      <h1>Vue Todo Demo</h1>
+      <span>
+        <router-link to="/">Home</router-link>
+        <router-link to="/about">About</router-link>
+      </span>
+    </nav>
+  </div>
+</template>
+
+<style scoped>
+nav {
+  background-color: indigo;
+  color: white;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  place-items: center;
+  justify-content: space-between;
+}
+
+nav h1 {
+  margin-left: 0.5em;
+  font-size: 1.5em;
+}
+
+nav span {
+  margin-right: 1em;
+}
+
+nav span a {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: lightcyan;
+  text-decoration: none;
+}
+</style>
