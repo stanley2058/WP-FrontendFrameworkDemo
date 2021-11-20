@@ -29,11 +29,11 @@ export default function About() {
         <p>
           原始碼：
           <a
-            href="https://github.com/stanley2058"
+            href="https://github.com/stanley2058/WP-FrontendFrameworkDemo"
             target="_blank"
             rel="noreferrer"
           >
-            Github
+            WP-FrontendFrameworkDemo - Github
           </a>
         </p>
       </main>
