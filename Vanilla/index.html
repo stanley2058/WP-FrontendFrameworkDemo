@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vanilla Todo</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap");
+      body,
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Noto Sans TC", sans-serif;
+      }
+    </style>
+    <link rel="stylesheet" href="button.css" />
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="main.css" />
+    <script>
+      let todoList;
+
+      // render todo list
+      const render = () => {
+        document.querySelector("ul").innerHTML = todoList
+          .map(
+            (todo) => `
+            <li>
+              <span class="checkbox">
+                <input
+                  type="checkbox"
+                  id="${todo.id}"
+                  onclick="checkChanged(this)"
+                  ${todo.checked ? "checked" : ""}
+                />
+                <label
+                  for="${todo.id}"
+                  ${todo.checked ? "class='cross'" : ""}
+                >
+                  ${todo.content}
+                </label>
+              </span>
+              <button class="btn error" onclick="deleteTodo('${todo.id}')">
+                Delete
+              </button>
+            </li>
+            `
+          )
+          .join("");
+      };
+
+      // deleteTodo
+      const deleteTodo = (id) => {
+        todoList = todoList.filter((todo) => todo.id !== id);
+        localStorage.setItem("todoList", JSON.stringify(todoList));
+        render();
+      };
+
+      // checkChanged
+      const checkChanged = (e) => {
+        const id = e.id;
+        const checked = e.checked;
+        // find the right one and update the checked value
+        todoList = todoList.map((todo) => {
+          if (todo.id === id) todo.checked = checked;
+          return todo;
+        });
+        localStorage.setItem("todoList", JSON.stringify(todoList));
+        render();
+      };
+
+      // onload
+      window.addEventListener("load", () => {
+        // load saved data and render
+        const data = localStorage.getItem("todoList");
+        todoList = data ? JSON.parse(data) : [];
+        render();
+
+        // bind addTodo
+        document.querySelector("form").addEventListener("submit", (e) => {
+          // prevent page from reloading
+          e.preventDefault();
+          const input = document.querySelector("input[type='text']");
+          const newTodo = input.value;
+          // add new todo to todoList
+          todoList = [
+            {
+              content: newTodo,
+              checked: false,
+              id: Date.now().toString(),
+            },
+            // explode current todoList and concat it after the new todo
+            ...todoList,
+          ];
+          // clear input field
+          input.value = "";
+          // save to localStorage and render
+          localStorage.setItem("todoList", JSON.stringify(todoList));
+          render();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="nav">
+      <h1>Vanilla Todo Demo</h1>
+      <span>
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+      </span>
+    </nav>
+    <main>
+      <h1>Todo</h1>
+      <div>
+        <form>
+          <input type="text" required />
+          <button class="btn primary" type="submit">Add</button>
+        </form>
+
+        <div><ul></ul></div>
+      </div>
+    </main>
+  </body>
+</html>

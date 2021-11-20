@@ -1,0 +1,10 @@
+div {
+  display: flex;
+  place-items: center;
+  justify-content: center;
+}
+
+main {
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
