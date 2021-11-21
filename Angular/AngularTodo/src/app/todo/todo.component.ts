@@ -17,7 +17,10 @@ export class TodoComponent implements OnInit {
   }
 
   addTodo(event: Event) {
+    // prevent page reloading
     event.preventDefault();
+
+    // add new todo to the front of the list
     this.todoList = [
       {
         content: this.newTodo,

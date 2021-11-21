@@ -3,21 +3,26 @@ import Button from "../components/Button";
 import styles from "./Todo.module.css";
 
 export default function Todo() {
+  // use React state hook to manipulate newTodo and todoList
   const [newTodo, setNewTodo] = React.useState("");
   const [todoList, setTodoList] = React.useState([]);
 
+  // on mount, fetch todoList from localStorage
   useEffect(() => {
     const todoList = localStorage.getItem("todoList");
     if (todoList) setTodoList(JSON.parse(todoList));
   }, []);
 
+  // set updated todoList and save to localStorage
   const updateTodoList = (newTodoList) => {
     setTodoList(newTodoList);
     localStorage.setItem("todoList", JSON.stringify(newTodoList));
   };
 
   const addTodo = (e) => {
+    // prevent page reload
     e.preventDefault();
+    // add new todo to the front of the list
     const newTodoList = [
       {
         content: newTodo,
@@ -27,6 +32,7 @@ export default function Todo() {
       ...todoList,
     ];
     updateTodoList(newTodoList);
+    // clear input
     setNewTodo("");
   };
 

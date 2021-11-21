@@ -1,4 +1,6 @@
-# Angular 專案建立說明
+# Angular 專案說明
+
+## 如何建立一個 Angular 專案
 
 安裝 Angular CLI
 
@@ -42,7 +44,27 @@ CREATE AngularTodo/src/app/app.component.ts (215 bytes)
     Successfully initialized git.
 ```
 
-執行開發伺服器
+執行開發伺服器：
+
+```
+ng serve --open
+```
+
+## 如何執行本範例
+
+到專案目錄下面執行：
+
+```
+npm install
+```
+
+完成後再執行開發伺服器：
+
+```
+ng serve
+```
+
+或加上 `--open` 自動開啟瀏覽器
 
 ```
 ng serve --open

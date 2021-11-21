@@ -1,9 +1,11 @@
-# 建立 React 專案
+# React 專案說明
 
-透過 `create-react-app` 建立 React 專案
+## 如何建立一個 React 專案
+
+我們可以透過 `create-react-app` 來建立 React 專案
 
 ```
-❯ npx create-react-app react-todo
+npx create-react-app react-todo
 ```
 
 建立完成的輸出
@@ -31,11 +33,24 @@ We suggest that you begin by typing:
   npm start
 
 Happy hacking!
-
 ```
 
-## 安裝 React Router
+再來到專案目錄下安裝 React Router
 
 ```
-npm add react-router-dom@6 history@5
+npm install react-router-dom@6 history@5
+```
+
+## 如何執行本範例
+
+到專案目錄下面執行：
+
+```
+npm install
+```
+
+完成後再執行開發伺服器：
+
+```
+npm run start
 ```
