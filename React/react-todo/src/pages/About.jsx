@@ -27,6 +27,10 @@ export default function About() {
         </p>
         <p>開發者：&lt;你的學號 + 姓名&gt;</p>
         <p>
+          伺服器位置：
+          <a href={window.location.origin}>{window.location.origin}</a>
+        </p>
+        <p>
           原始碼：
           <a
             href="https://github.com/stanley2058/WP-FrontendFrameworkDemo"

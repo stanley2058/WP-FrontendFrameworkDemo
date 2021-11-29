@@ -10,6 +10,9 @@
       </p>
       <p>開發者：&lt;你的學號 + 姓名&gt;</p>
       <p>
+        伺服器位置：<a :href="origin">{{ origin }}</a>
+      </p>
+      <p>
         原始碼：<a
           href="https://github.com/stanley2058/WP-FrontendFrameworkDemo"
           target="_blank"
@@ -32,3 +35,14 @@ main {
   margin-bottom: 3em;
 }
 </style>
+
+<script>
+export default {
+  name: "About",
+  data() {
+    return {
+      origin: window.location.origin,
+    };
+  },
+};
+</script>
