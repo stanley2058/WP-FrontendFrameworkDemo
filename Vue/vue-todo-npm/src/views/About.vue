@@ -8,7 +8,7 @@
         <a href="https://vuejs.org/" target="_blank">Vue 官網</a>
         找到更多資訊。
       </p>
-      <p>開發者：&lt;你的學號 + 姓名&gt;</p>
+      <p>開發者：{{ name }}</p>
       <p>
         伺服器位置：<a :href="origin">{{ origin }}</a>
       </p>
@@ -42,6 +42,7 @@ export default {
   data() {
     return {
       origin: window.location.origin,
+      name: "<你的學號 + 姓名>",
     };
   },
 };

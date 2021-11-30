@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./About.module.css";
 
 export default function About() {
+  const [name] = useState("<你的學號 + 姓名>");
   return (
     <div className={styles.div}>
       <main className={styles.main}>
@@ -25,7 +26,7 @@ export default function About() {
           </a>
           。
         </p>
-        <p>開發者：&lt;你的學號 + 姓名&gt;</p>
+        <p>開發者：{name}</p>
         <p>
           伺服器位置：
           <a href={window.location.origin}>{window.location.origin}</a>
